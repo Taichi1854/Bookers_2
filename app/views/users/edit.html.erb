@@ -1,0 +1,43 @@
+<div class="container">
+
+<% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h4>
+          <%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:
+        </h4>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+  <h2>User info</h2>
+
+  <%= form_for @user,:url => {controller: "users", action: "update"}, method: :patch do |f| %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %>
+      <p>
+        <%= f.attachment_field :profile_image %>
+      </p>
+    </div>
+
+    <div class="field">
+  	  <%= f.label :introduction %>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update User" %>
+    </div>
+
+  <% end %>
+
+</div>
