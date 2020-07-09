@@ -1,0 +1,7 @@
+<h2>Follow Users</h2>
+
+  <% if @users.count > 0 %>
+    <%= render 'relationships/index', users: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
